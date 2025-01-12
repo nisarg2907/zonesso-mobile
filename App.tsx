@@ -125,7 +125,7 @@ export default function App() {
             fontSize: 12,
             marginTop: 4,
           },
-          
+          tabBarPressColor: 'transparent', 
           headerShown: false,
         })}
       >
@@ -138,6 +138,11 @@ export default function App() {
             tabBarItemStyle: {
               height: 74,
               paddingVertical: 12,
+            },
+            tabBarLabelStyle: {
+              fontFamily: 'Nunito-Medium',
+              fontSize: 12,
+              marginTop: 8, // Adjusted to move the name a little down
             },
           }}
         />

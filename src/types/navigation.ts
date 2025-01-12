@@ -1,4 +1,4 @@
-export type RootStackParamList = {
+export type HomeStackParamList = {
     Home: undefined;
-    Details: { itemId: number };
-  };
+    CarWashDetailsScreen: undefined;
+};
