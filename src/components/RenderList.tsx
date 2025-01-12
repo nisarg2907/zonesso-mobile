@@ -16,6 +16,7 @@ interface RenderListProps {
   gapBetweenTitleAndList?: number;
   itemWidth?: number;
   itemHeight?: number;
+  onViewAll?: () => void;
 }
 
 const RenderListItem: React.FC<{ item: Item; itemWidth?: number; itemHeight?: number }> = ({ item, itemWidth = 152, itemHeight = 120 }) => {
@@ -53,12 +54,12 @@ const RenderListItem: React.FC<{ item: Item; itemWidth?: number; itemHeight?: nu
   );
 };
 
-const RenderList: React.FC<RenderListProps> = ({ data, title, itemGap=4, gapBetweenTitleAndList = 12, itemWidth, itemHeight }) => {
+const RenderList: React.FC<RenderListProps> = ({ data, title, itemGap=4, gapBetweenTitleAndList = 12, itemWidth, itemHeight, onViewAll }) => {
   return (
     <View className="mb-4">
       <View className="flex-row justify-between items-center" style={{ marginBottom: gapBetweenTitleAndList }}>
         <Text className="text-[18px] font-bold text-black">{title}</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onViewAll}>
           <Text className="text-sm text-[#FF4444]">View all</Text>
         </TouchableOpacity>
       </View>

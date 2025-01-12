@@ -98,6 +98,7 @@ export default function DetailsScreen({ route, navigation }: Props) {
         itemGap={14}
         itemHeight={120}
         itemWidth={153}
+        onViewAll={() => navigation.navigate('CarWashDetailsScreen')}
       />
         </View>
             
@@ -114,6 +115,7 @@ export default function DetailsScreen({ route, navigation }: Props) {
         itemGap={14}
         itemHeight={120}
         itemWidth={153}
+        onViewAll={() => navigation.navigate('CarWashDetailsScreen')}
       />
         </View>
             
@@ -133,6 +135,7 @@ export default function DetailsScreen({ route, navigation }: Props) {
         itemGap={14}
         itemHeight={120}
         itemWidth={153}
+        onViewAll={() => navigation.navigate('CityWashDetailsScreen')}
       />
         </View>
     </ScrollView>
