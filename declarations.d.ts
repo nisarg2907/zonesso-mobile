@@ -11,6 +11,7 @@ declare module "*.ttf" {
 }
 
 declare module "*.png" {
-    const content: string;
+    import { ImageProps } from "react-native";
+    const content: ImageProps['source'];
     export default content;
 }

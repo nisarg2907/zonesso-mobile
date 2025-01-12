@@ -3,7 +3,8 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 import ShareIcon from '../../assets/svg/cardetailscreen/ShareIcon.svg';
 import HeartIcon from '../../assets/svg/cardetailscreen/HeartIcon.svg';
-
+import CallSvg from '../../assets/svg/Call.svg'
+import ChatSvg from '../../assets/svg/Chat.svg'
 export enum BadgeType {
   None,
   Premium,
@@ -23,6 +24,16 @@ interface CarDetailCardProps {
   badgeType?: BadgeType;
   onChat?: () => void;
   onCall?: () => void;
+  onServiceClick?:()=>void;
+  onCompanyClick?:()=>void
+}
+interface CompanyServiceCardprops  {
+  image: React.FC<SvgProps>;
+  price: string;
+  title: string;
+  description: string;
+  badgeType?: BadgeType;
+  onImageClick?:()=>void
 }
 
 const CarDetailCard: React.FC<CarDetailCardProps> = ({
@@ -38,6 +49,8 @@ const CarDetailCard: React.FC<CarDetailCardProps> = ({
   badgeType = BadgeType.None,
   onChat,
   onCall,
+  onCompanyClick,
+  onServiceClick
 }) => {
   const getBadgeStyle = () => {
     switch (badgeType) {
@@ -56,7 +69,7 @@ const CarDetailCard: React.FC<CarDetailCardProps> = ({
     <View className=" relative w-[360px]  h-auto mt-2 bg-white rounded-lg border border-[#EAECF0] shadow-sm mb-4 self-center">
       <View className="relative w-full h-[223px]">
         <View className="w-full h-full">
-          <Image />
+          <TouchableOpacity onPress={onServiceClick}><Image /></TouchableOpacity>
           {badgeStyle && (
             <View className="absolute top-0 left-0 right-0 flex-row justify-between p-3">
               <View
@@ -93,7 +106,9 @@ const CarDetailCard: React.FC<CarDetailCardProps> = ({
         </Text>
 
         <View className="flex-row items-center mt-4 gap-2">
-          <Logo width={40} height={40} />
+          <TouchableOpacity onPress={onCompanyClick}>
+            <Logo width={40} height={40} />
+          </TouchableOpacity>
           <View className="flex-1">
             <View className="flex-row gap-2">
               <Text className="text-xs font-nunito font-semibold text-[#475467]">
@@ -127,19 +142,74 @@ const CarDetailCard: React.FC<CarDetailCardProps> = ({
             onPress={onChat}
             className="flex-1 h-[32px] justify-center items-center border border-[#FDA29B] rounded"
           >
-            <Text className="text-[#F04438] font-nunito font-semibold text-sm">
-              Chat
-            </Text>
+          <ChatSvg/>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={onCall}
             className="flex-1 h-[32px] justify-center items-center bg-[#F04438] rounded"
           >
-            <Text className="text-white font-nunito font-extrabold text-sm">
-              Call
-            </Text>
+           <CallSvg/>
           </TouchableOpacity>
         </View>
+      </View>
+    </View>
+  );
+};
+
+export const CompanyServiceCard: React.FC<CompanyServiceCardprops> = ({
+  image: Image,
+  price,
+  title,
+  description,
+  badgeType = BadgeType.None,
+  onImageClick,
+}) => {
+  const getBadgeStyle = () => {
+    switch (badgeType) {
+      case BadgeType.Premium:
+        return { backgroundColor: '#F36414', text: 'Premium' };
+      case BadgeType.Featured:
+        return { backgroundColor: '#23acec', text: 'Featured' };
+      default:
+        return null;
+    }
+  };
+
+  const badgeStyle = getBadgeStyle();
+
+  return (
+    <View className=" relative w-[360px]  h-auto mt-2 bg-white rounded-lg border border-[#EAECF0] shadow-sm mb-4 self-center">
+      <View className="relative w-full h-[223px]">
+        <View className="w-full h-full">
+          <TouchableOpacity onPress={onImageClick} ><Image /></TouchableOpacity>
+          {badgeStyle && (
+            <View className="absolute top-0 left-0 right-0 flex-row justify-between p-3">
+              <View
+                className={`rounded w-[94px] h-[23px] flex items-center justify-center`}
+                style={{ backgroundColor: badgeStyle.backgroundColor }}
+              >
+                <Text className="text-white font-nunito text-[14px]">
+                  {badgeStyle.text}
+                </Text>
+              </View>
+              <View className="flex-row gap-4">
+                <ShareIcon />
+                <HeartIcon />
+              </View>
+            </View>
+          )}
+        </View>
+      </View>
+
+      <View className="p-4">
+        <View className="flex-row justify-between items-center">
+          <Text className="font-nunito text-base font-bold">{title}</Text>
+          <Text className="font-nunito text-base font-black text-[#F04438]">AED {price}</Text>
+        </View>
+
+        <Text className="mt-2 text-[#475467] font-nunito text-xs font-semibold">
+          {description}
+        </Text>
       </View>
     </View>
   );

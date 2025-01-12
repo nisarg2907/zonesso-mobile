@@ -127,10 +127,12 @@ export default function HomeStack() {
         <Stack.Screen
         name="CarWashCompanyScreen"
         component={CarWashCompanyScreen as React.ComponentType<any>}
+        options={{ headerShown: false }}
       />
          <Stack.Screen
         name="CarServiceScreen"
         component={CarServiceScreen as React.ComponentType<any>}
+        options={{ headerShown: false }}
       />
          <Stack.Screen
         name="PaymentScreen"

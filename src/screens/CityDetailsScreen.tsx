@@ -4,13 +4,13 @@ import { HomeStackParamList } from "../types/navigation";
 import ToyotaLogoImage from "../../assets/svg/homescreen/ToyotaLogo.svg";
 import CarDetailCard, { BadgeType } from "../components/Card";
 import cardImageOne from "../../assets/svg/citycarwashscreen/ImageOne.svg";
-
 type Props = NativeStackScreenProps<
   HomeStackParamList,
   "CityWashDetailsScreen"
 >;
 
-export default function CityDetailsScreen({ route, navigation }: Props) {
+export default function CityDetailsScreen({ route,navigation }: Props) {
+   
   return (
     <ScrollView className="flex-1 mb-[74px] bg-white">
       {/* Title */}
@@ -39,6 +39,8 @@ export default function CityDetailsScreen({ route, navigation }: Props) {
           onChat={() => console.log("Chat clicked")}
           onCall={() => console.log("Call clicked")}
           badgeType={BadgeType.Premium}
+          onCompanyClick={()=>navigation.navigate("CarWashCompanyScreen")}
+          onServiceClick={()=>navigation.navigate('CarServiceScreen')}
         />
         <CarDetailCard
           image={cardImageOne}
