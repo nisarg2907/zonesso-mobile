@@ -1,7 +1,7 @@
 import React from 'react';
 import './global.css';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import HomeIcon from './assets/svg/HomeIcon.svg';
 import ChatIcon from './assets/svg/ChatIcon.svg';
 import ActivityIcon from './assets/svg/ActivityIcon.svg';
@@ -31,6 +31,7 @@ import NunitoRegular from './assets/fonts/nunito/Nunito-Regular.ttf';
 import NunitoSemiBold from './assets/fonts/nunito/Nunito-SemiBold.ttf';
 import NunitoSemiBoldItalic from './assets/fonts/nunito/Nunito-SemiBoldItalic.ttf';
 import HomeStack from './src/navigations/HomeStack';
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -79,7 +80,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        screenOptions={({ route }) => ({
+        screenOptions={({ route }): BottomTabNavigationOptions => ({
           tabBarIcon: ({ focused, color, size }) => {
             if (route.name === 'Home') {
               return <HomeIcon width={24} height={24} />;
@@ -123,9 +124,10 @@ export default function App() {
           tabBarLabelStyle: {
             fontFamily: 'Nunito-Medium',
             fontSize: 12,
-            marginTop: 4,
+            marginTop: route.name === 'Post' ? 8 : 4,
           },
-          tabBarPressColor: 'transparent', 
+          // @ts-ignore
+          tabBarButton: (props) => <TouchableOpacity {...props} activeOpacity={1 as number | undefined} />,
           headerShown: false,
         })}
       >
@@ -140,9 +142,8 @@ export default function App() {
               paddingVertical: 12,
             },
             tabBarLabelStyle: {
-              fontFamily: 'Nunito-Medium',
               fontSize: 12,
-              marginTop: 8, // Adjusted to move the name a little down
+              marginTop: 10, 
             },
           }}
         />

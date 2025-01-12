@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text, TouchableOpacity } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 import HomeScreen from "../screens/HomeScreen";
 import SearchIcon from "../../assets/svg/SearchIcon.svg";
 import LocationIcon from "../../assets/svg/LocationIcon.svg";
@@ -8,14 +9,14 @@ import CarWashDetailsScreen from "../screens/DetailsScreen";
 import CarDetailsSearchIcon from "../../assets/svg/CarDetailsSearchIcon.svg";
 import BackIcon from "../../assets/svg/BackIcon.svg";
 import FilterIcon from "../../assets/svg/FilterIcon.svg";
-type HomeStackParamList = {
-  HomeScreen: undefined;
-  CarWashDetailsScreen: undefined;
-};
+import { HomeStackParamList } from "../types/navigation";
+
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
 
 export default function HomeStack() {
+  const navigation = useNavigation();
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -64,9 +65,9 @@ export default function HomeStack() {
             fontWeight: "800",
           },
           headerLeft: () => (
-            <View className="flex-row px-2  mr-1 items-end gap-1">
+            <TouchableOpacity onPress={() => navigation.navigate('HomeScreen' as never)} className="flex-row px-2 mr-1 items-end gap-1">
               <BackIcon />
-            </View>
+            </TouchableOpacity>
           ),
           headerRight: () => (
             <TouchableOpacity className="flex flex-row mr-1 px-2 gap-2 -ml-2">

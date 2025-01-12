@@ -1,4 +1,4 @@
 export type HomeStackParamList = {
-    Home: undefined;
+    HomeScreen: undefined;
     CarWashDetailsScreen: undefined;
 };
