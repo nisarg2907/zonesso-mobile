@@ -162,6 +162,7 @@ const HomeScreen = () => {
           ),
         }))}
         title="Top Showrooms"
+        itemGap={12}
       />
 
       {/* Top Sales Section */}
@@ -176,6 +177,7 @@ const HomeScreen = () => {
           ),
         }))}
         title="Top Sales"
+        itemGap={12}
       />
 
       {/* Top Number Plates Section */}
@@ -187,6 +189,7 @@ const HomeScreen = () => {
           ),
         }))}
         title="Top Number Plates"
+        itemGap={12}
       />
 
       {/* Previous Searches Section */}
@@ -198,6 +201,7 @@ const HomeScreen = () => {
           ),
         }))}
         title="Previous Searches"
+        itemGap={12}
       />
     </ScrollView>
   );
