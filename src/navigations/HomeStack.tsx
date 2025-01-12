@@ -137,6 +137,29 @@ export default function HomeStack() {
          <Stack.Screen
         name="PaymentScreen"
         component={PaymentScreen as React.ComponentType<any>}
+        options={() => ({
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: "#fff",
+          },
+          headerShadowVisible: false,
+          headerTitle: "Pay & Confirm",
+          headerTitleAlign:"center",
+          headerTitleStyle: {
+            color: "#1E1E1E",
+            fontFamily: "Nunito",
+            fontSize: 24,
+            fontWeight: "800",
+          },
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              className="flex-row px-2 mr-1 items-end gap-1"
+            >
+              <BackIcon />
+            </TouchableOpacity>
+          ),
+        })}
       />
       
     </Stack.Navigator>
