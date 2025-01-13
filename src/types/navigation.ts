@@ -5,4 +5,5 @@ export type HomeStackParamList = {
     CarWashCompanyScreen:undefined;
     CarServiceScreen:undefined;
     PaymentScreen:undefined
+    AnimationScreen:undefined;
 };

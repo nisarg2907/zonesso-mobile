@@ -18,6 +18,7 @@ import CityDetailsScreen from "../screens/CityDetailsScreen";
 import CarWashCompanyScreen from "../screens/CarWashCompanyScreen";
 import CarServiceScreen from "../screens/CarServiceScreen";
 import PaymentScreen from "../screens/PaymentScreen";
+import AnimationScreen from "../screens/AnimationScreen";
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
 
@@ -161,7 +162,11 @@ export default function HomeStack() {
           ),
         })}
       />
-      
+      <Stack.Screen
+        name="AnimationScreen"
+        component={AnimationScreen as React.ComponentType<any>}
+        options={{ headerShown: false }}
+      /> 
     </Stack.Navigator>
   );
 }
